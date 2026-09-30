@@ -7,6 +7,7 @@ load_dotenv()
 
 url_groq = "https://api.groq.com/openai/v1/chat/completions"
 api_key = os.getenv("GROQ_API_KEY")
+password_secreta = os.getenv("APP_PASSWORD")
 
 st.title("NUKE AI")
 st.subheader("Created by NukeSv")
@@ -20,7 +21,7 @@ if "autenticado" not in st.session_state:
 if not st.session_state["autenticado"]:
     contrasena = st.text_input("Ingrese la contraseña para continuar: ", type="password")
     
-    if contrasena == "N0str0m0":
+    if contrasena == password_secreta:
         st.session_state["autenticado"] = True
         st.rerun() # Recarga la página al instante
     elif contrasena != "":
